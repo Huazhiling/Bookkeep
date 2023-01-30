@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_sure">Agree</string>
+    <string name="dialog_cancel">Reject</string>
+    <string name="dialog_privacy_title">Privacy &amp; Agreement</string>
+    <string name="process_title">Remind</string>
+    <string name="process_content">Please await…</string>
+    <string name="dialog_next">Go</string>
+    <string name="dialog_skip">Skip</string>
+</resources>

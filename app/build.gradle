@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk CompileSdkVersion as Integer
+
+    signingConfigs {
+        config {
+            keyAlias KeyAlias
+            keyPassword KeyPassWord
+            storeFile file('/Users/wangwenjie/AndroidStudioProjects/Bookkeeping/app/book.jks')
+            storePassword KeyStorePassWord
+        }
+    }
+    defaultConfig {
+        applicationId "com.tuita.bookkeeping"
+        minSdk 23
+        targetSdk TargetSdkVersion as Integer
+        versionCode AppVersionCode as Integer
+        versionName AppVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    //指定打包后应用名称
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = outputFile.name.replace(".apk", "记账_${defaultConfig.versionName}.apk")
+                outputFileName = fileName
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField('String', 'BUGLY_ID', BuglyId)
+            buildConfigField('String', 'BASE_URL', BaseUrl)
+            buildConfigField('String', 'PRIVACY_URL', PrivacyUrl)
+            signingConfig signingConfigs.config
+            debuggable true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    //Utils
+    implementation 'com.blankj:utilcodex:1.31.1'
+    implementation 'org.jsoup:jsoup:1.13.1'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
+    //沉浸式状态栏// 基础依赖包，必须要依赖
+    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+    implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
+    implementation 'org.greenrobot:eventbus:3.3.1'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.github.Huazhiling:RsPermission:v1.0.7'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    implementation 'com.github.lygttpod:SuperTextView:2.1.8'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
