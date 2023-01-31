@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/icon_parent"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_gravity="center"
+    android:layout_margin="10dp">
+
+    <com.allen.library.CircleImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@color/skip_gray" />
+
+    <com.allen.library.CircleImageView
+        android:id="@+id/insert_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:src="@drawable/qiaoqian" />
+</RelativeLayout>

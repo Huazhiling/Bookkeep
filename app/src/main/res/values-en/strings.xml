@@ -10,4 +10,5 @@
     <string name="dialog_skip">Skip</string>
     <string name="app_btn_bookkeeping">Book</string>
     <string name="app_btn_more">More</string>
+    <string name="insert_bookkeeping_title">Add Bookkeeping Record</string>
 </resources>

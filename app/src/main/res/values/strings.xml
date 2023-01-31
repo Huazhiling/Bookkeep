@@ -9,4 +9,5 @@
     <string name="dialog_skip">跳过</string>
     <string name="app_btn_bookkeeping">账单</string>
     <string name="app_btn_more">更多</string>
+    <string name="insert_bookkeeping_title">添加人情帐</string>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -19,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="添加人情帐"
+            android:text="@string/insert_bookkeeping_title"
             android:textColor="@color/black"
             android:textSize="21sp" />
 
@@ -36,4 +37,12 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorGray" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/type_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="5" />
 </LinearLayout>
