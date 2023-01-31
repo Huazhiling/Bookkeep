@@ -1,12 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/app_system_color" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0F88FA"
-        android:gravity="center" />
-</LinearLayout>
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.allen.library.CircleImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@color/black_gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="请登录"
+                        android:textColor="@color/black_gray"
+                        android:textSize="23sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            app:sDividerLineType="none"
+            app:sLeftTextSize="21sp"
+            app:sLeftTextString="数据服务" />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            app:sDividerLineType="none"
+            app:sLeftTextSize="21sp"
+            app:sLeftTextString="全部账单" />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            app:sDividerLineType="none"
+            app:sLeftTextSize="21sp"
+            app:sLeftTextString="增值业务" />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            app:sDividerLineType="none"
+            app:sLeftTextSize="21sp"
+            app:sLeftTextString="人物关系" />
+
+        <com.allen.library.SuperTextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            app:sDividerLineType="none"
+            app:sLeftTextSize="21sp"
+            app:sLeftTextString="设置" />
+    </LinearLayout>
+</RelativeLayout>

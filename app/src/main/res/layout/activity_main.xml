@@ -8,7 +8,7 @@
         android:id="@+id/status_bar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/white" />
+        android:background="@color/app_system_color" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/main_vp"
