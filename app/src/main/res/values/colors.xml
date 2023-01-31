@@ -20,4 +20,5 @@
     <color name="window_hint_gray">#99000000</color>
     <color name="window_transparent">#00000000</color>
     <color name="skip_gray">#33333333</color>
+    <color name="app_uncheck">#BFBFBF</color>
 </resources>

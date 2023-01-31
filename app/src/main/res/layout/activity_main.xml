@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/main_vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/colorGray"
+        android:layout_height="1dp"/>
+    <RadioGroup
+        android:id="@+id/main_btn"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/main_book"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textColor="@color/select_color_app_btn_radio"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/select_btn_bk_status"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:text="@string/app_btn_bookkeeping"
+            android:textSize="17sp" />
+
+        <ImageView
+            android:id="@+id/main_add"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:padding="15dp"
+            android:src="@drawable/btn_add_icon" />
+
+
+        <RadioButton
+            android:id="@+id/main_more"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:textColor="@color/select_color_app_btn_radio"
+            android:drawableTop="@drawable/select_btn_more_status"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:text="@string/app_btn_more"
+            android:textSize="17sp" />
+    </RadioGroup>
+</LinearLayout>

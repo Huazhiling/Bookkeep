@@ -7,4 +7,6 @@
     <string name="process_content">请稍后</string>
     <string name="dialog_next">前往</string>
     <string name="dialog_skip">跳过</string>
+    <string name="app_btn_bookkeeping">账单</string>
+    <string name="app_btn_more">更多</string>
 </resources>
