@@ -1,5 +1,8 @@
 package com.tuita.bookkeeping.activity;
 
+import static com.tuita.bookkeeping.command.Constant.contents;
+import static com.tuita.bookkeeping.command.Constant.resIds;
+
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,13 +23,6 @@ public class InsertBookkeepingActivity extends BaseActivity {
     private RecyclerView typeRv;
     private BookkeepingTypeAdapter bookkeepingTypeAdapter;
     private List<BookkeepingTypeBean> bookkeepingTypeBeans;
-    private final int[] resIds = {R.drawable.jiehun, R.drawable.give_birth
-            , R.drawable.zhousui, R.drawable.manyue
-            , R.drawable.birthday, R.drawable.qiaoqian
-            , R.drawable.yasuiqian, R.drawable.shengxue
-            , R.drawable.dashou, R.drawable.sangshi};
-    private final String[] contents = {"结婚", "生子", "周岁", "满月", "生日"
-            , "乔迁", "压岁", "升学", "大寿", "丧事"};
 
     @Override
     protected void adapterInit() {

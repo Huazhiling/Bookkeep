@@ -21,6 +21,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/bk_time"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center"
@@ -71,6 +72,7 @@
                                 android:textSize="19sp" />
 
                             <TextView
+                                android:id="@+id/out_account"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
@@ -96,6 +98,7 @@
                                 android:textSize="19sp" />
 
                             <TextView
+                                android:id="@+id/in_account"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
@@ -116,6 +119,7 @@
                 android:orientation="vertical">
 
                 <com.allen.library.SuperTextView
+                    android:id="@+id/bk_more"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
@@ -130,6 +134,7 @@
                     app:sRightTextString="查看更多" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/bk_record"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/white"
