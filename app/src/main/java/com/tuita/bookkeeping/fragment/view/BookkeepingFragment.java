@@ -82,7 +82,7 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
             }
         }
         inAccount.setText(String.format("+%s", inPrice));
-        inAccount.setText(String.format("-%s", outPrice));
+        outAccount.setText(String.format("-%s", outPrice));
     }
 
     private void adapterInti() {
