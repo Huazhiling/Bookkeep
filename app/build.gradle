@@ -9,7 +9,7 @@ android {
         config {
             keyAlias KeyAlias
             keyPassword KeyPassWord
-            storeFile file('/Users/wangwenjie/AndroidStudioProjects/Bookkeeping/app/book.jks')
+            storeFile file(KeyStoreFile)
             storePassword KeyStorePassWord
         }
     }
