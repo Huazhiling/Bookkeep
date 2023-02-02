@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp"
+    android:background="@drawable/shape_system_notify_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="40dp"
+    android:paddingBottom="40dp">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/success_icon" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="保存成功"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+</LinearLayout>

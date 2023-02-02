@@ -77,8 +77,8 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:padding="5dp"
-                                android:text="¥9806"
-                                android:textColor="#65DA79"
+                                android:text="¥0"
+                                android:textColor="@color/app_in_color"
                                 android:textSize="25sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -103,8 +103,8 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:padding="5dp"
-                                android:text="¥10000"
-                                android:textColor="@color/app_system_color"
+                                android:text="¥0"
+                                android:textColor="@color/app_out_color"
                                 android:textSize="25sp"
                                 android:textStyle="bold" />
                         </LinearLayout>

@@ -10,5 +10,10 @@
     <string name="dialog_skip">Skip</string>
     <string name="app_btn_bookkeeping">Book</string>
     <string name="app_btn_more">More</string>
-    <string name="insert_bookkeeping_title">Add Bookkeeping Record</string>
+    <string name="insert_bookkeeping_title">Add Record</string>
+    <string name="insert_sl_content">随礼</string>
+    <string name="insert_hl_content">回礼</string>
+    <string name="insert_save_btn">保存</string>
+    <string name="insert_no_select_hint">请从上方选择一项人情帐</string>
+    <string name="insert_add_item_tv">添加一项</string>
 </resources>

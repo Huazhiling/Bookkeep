@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
-        <activity android:name=".activity.SplashActivity"
+        <activity
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.MoreBookkeepingActivity"/>
-        <activity android:name=".activity.InsertBookkeepingActivity"/>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MoreBookkeepingActivity" />
+        <activity
+            android:name=".activity.InsertBookkeepingActivity"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

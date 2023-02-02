@@ -31,6 +31,23 @@
             android:padding="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/app_back" />
+
+        <TextView
+            android:id="@+id/insert_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/shape_insert_remark_audio"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="5dp"
+            android:text="@string/insert_save_btn"
+            android:textColor="@color/white"
+            android:textSize="17sp" />
     </RelativeLayout>
 
     <View
@@ -38,11 +55,289 @@
         android:layout_height="1dp"
         android:background="@color/colorGray" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/type_rv"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="5" />
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/type_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:id="@+id/insert_type_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/insert_default_type_icon" />
+
+                <TextView
+                    android:id="@+id/insert_type_name"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/insert_no_select_hint"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/insert_person" />
+
+                <EditText
+                    android:id="@+id/insert_person"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/insert_time_icon" />
+
+                <TextView
+                    android:id="@+id/insert_type_time"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/insert_status_icon" />
+
+                <RadioGroup
+                    android:id="@+id/insert_status_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/insert_status_sl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@drawable/select_insert_status_check"
+                        android:button="@null"
+                        android:checked="true"
+                        android:gravity="center"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:text="@string/insert_sl_content"
+                        android:textColor="@color/select_insert_status_radio"
+                        android:textSize="19sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/insert_status_hl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="30dp"
+                        android:background="@drawable/select_insert_status_check"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:text="@string/insert_hl_content"
+                        android:textColor="@color/select_insert_status_radio"
+                        android:textSize="19sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/insert_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:focusableInTouchMode="false"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <TextView
+                android:id="@+id/insert_add_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/shape_insert_remark_audio"
+                android:gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingTop="10dp"
+                android:paddingRight="40dp"
+                android:paddingBottom="10dp"
+                android:text="@string/insert_add_item_tv"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/insert_remark_icon" />
+
+                <EditText
+                    android:id="@+id/insert_remark"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="left"
+                    android:hint="请填写一些备注信息（可选）"
+                    android:minHeight="160dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/insert_remark_audio_icon" />
+
+                <TextView
+                    android:id="@+id/insert_remark_audio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/shape_insert_remark_audio"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="40dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="40dp"
+                    android:paddingBottom="10dp"
+                    android:text="长按说话"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:minHeight="60dp"
+                    android:text="可长按语音备注"
+                    android:textColor="@color/app_system_gray"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/insert_all_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="right"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="¥0"
+                android:textColor="@color/app_out_color"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

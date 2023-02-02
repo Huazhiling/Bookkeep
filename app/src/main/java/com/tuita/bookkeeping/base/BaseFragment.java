@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment;
 
 import com.tuita.bookkeeping.utils.XmlLayoutResIdUtils;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 public abstract class BaseFragment extends Fragment {
 
     protected View mRootView;
@@ -25,6 +28,7 @@ public abstract class BaseFragment extends Fragment {
             mRootView = inflater.inflate(XmlLayoutResIdUtils.checkRes(this), container, false);
             initView();
             initData();
+            EventBus.getDefault().register(this);
         }
         return mRootView;
     }
@@ -51,8 +55,13 @@ public abstract class BaseFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         this.mContext = null;
+        EventBus.getDefault().unregister(this);
     }
 
+    @Subscribe
+    public void objEvent(Object obj) {
+
+    }
 
     protected <T extends View> T findViewById(int resId) {
         return mRootView.findViewById(resId);

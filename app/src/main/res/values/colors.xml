@@ -22,6 +22,7 @@
     <color name="skip_gray">#33333333</color>
     <color name="app_uncheck">#BFBFBF</color>
     <color name="app_system_color">#E75F6E</color>
+    <color name="app_system_gray">#696969</color>
     <color name="app_in_color">#489B53</color>
     <color name="app_out_color">#E75F6E</color>
 </resources>

@@ -1,8 +1,5 @@
 package com.tuita.bookkeeping.fragment.view;
 
-import static com.tuita.bookkeeping.command.Constant.contents;
-import static com.tuita.bookkeeping.command.Constant.resIds;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.View;
@@ -20,11 +17,14 @@ import com.tuita.bookkeeping.annoation.XmlLayoutResId;
 import com.tuita.bookkeeping.base.BaseMvpFragment;
 import com.tuita.bookkeeping.base.BasePresenter;
 import com.tuita.bookkeeping.bean.BookkeepingItemBean;
+import com.tuita.bookkeeping.event.BookkeepingRefreshEvent;
 import com.tuita.bookkeeping.fragment.contract.BookkeepingContract;
 import com.tuita.bookkeeping.fragment.presenter.BookkeepingPresenter;
 import com.tuita.bookkeeping.ui.RuleRecyclerLines;
+import com.tuita.bookkeeping.utils.RecordUtils;
 
-import java.math.BigDecimal;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,17 +54,7 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
     protected void initData() {
         super.initData();
         bookkeepingItemBeans = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            BookkeepingItemBean bean = new BookkeepingItemBean();
-            int typePotion = (int) (Math.random() * 7);
-            bean.setRecordBookkeepingType(resIds[typePotion]);
-            bean.setRecordName(contents[typePotion]);
-            bean.setRecordDescription("记一下，怕忘了");
-            bean.setRecordPrice((int) (Math.random() * 5000));
-            bean.setRecordStatus((int) (Math.random() * 2));
-            bean.setRecordTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-            bookkeepingItemBeans.add(bean);
-        }
+        bookkeepingItemBeans.addAll(RecordUtils.getInstance().initSimulationData());
         bookkeepingRecordAdapter = new BookkeepingRecordAdapter(R.layout.item_booppeening_record, bookkeepingItemBeans);
         bkRecord.setAdapter(bookkeepingRecordAdapter);
         bkTime.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
@@ -73,6 +63,10 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
     }
 
     private void viewInit() {
+        initAccountPrice();
+    }
+
+    private void initAccountPrice() {
         int inPrice = 0, outPrice = 0;
         for (BookkeepingItemBean bookkeepingItemBean : bookkeepingItemBeans) {
             if (bookkeepingItemBean.getRecordStatus() == 1) {
@@ -114,5 +108,14 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
     @Override
     public BasePresenter initPresenter() {
         return BookkeepingPresenter.newInstance();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Subscribe
+    public void bookkeepingRefresh(BookkeepingRefreshEvent bookkeepingRefreshEvent){
+        bookkeepingItemBeans.clear();
+        bookkeepingItemBeans.addAll(RecordUtils.getInstance().getNewsRecord());
+        bookkeepingRecordAdapter.notifyDataSetChanged();
+        initAccountPrice();
     }
 }
