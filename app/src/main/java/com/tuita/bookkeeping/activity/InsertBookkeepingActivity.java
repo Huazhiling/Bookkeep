@@ -79,9 +79,8 @@ public class InsertBookkeepingActivity extends BaseActivity {
             }
         });
         insertItemAdapter.setInsertCallBack((content, position) -> {
-            KeyboardUtils.hideSoftInput(getWindow());
             insertItemBeans.get(position).setName(content);
-            insertItemAdapter.notifyItemChanged(position);
+//            insertItemAdapter.notifyItemChanged(position);
         });
         insertTypeName.setOnClickListener(new View.OnClickListener() {
             @Override

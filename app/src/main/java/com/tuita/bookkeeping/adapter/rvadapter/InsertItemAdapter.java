@@ -1,5 +1,7 @@
 package com.tuita.bookkeeping.adapter.rvadapter;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,10 +26,20 @@ public class InsertItemAdapter extends BaseQuickAdapter<InsertItemBean, BaseView
     protected void convert(BaseViewHolder helper, InsertItemBean item) {
         helper.setText(R.id.item_type, item.getInsertTypeName());
         EditText valueView = helper.getView(R.id.item_desc);
-        valueView.setOnFocusChangeListener((v, hasFocus) -> {
-            if (!hasFocus) {
-//                insertCallBack.editFocusChange(valueView.getText().toString().trim(),helper.getLayoutPosition());
-                item.setName(valueView.getText().toString().trim());
+        valueView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                insertCallBack.editFocusChange(valueView.getText().toString().trim(),helper.getLayoutPosition());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
         ImageView reduceView = helper.getView(R.id.item_reduce);
