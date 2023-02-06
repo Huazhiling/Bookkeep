@@ -14,18 +14,13 @@ import java.util.List;
 
 public class RecordUtils {
     private final List<BookkeepingItemBean> bookkeepingItemBeans;
-    private static RecordUtils recordUtils;
-    private static final Object object = new Object();
+
+    private static final class RecordUtilsHolder {
+        static final RecordUtils recordUtils = new RecordUtils();
+    }
 
     public static RecordUtils getInstance() {
-        if (recordUtils == null) {
-            synchronized (object) {
-                if (recordUtils == null) {
-                    recordUtils = new RecordUtils();
-                }
-            }
-        }
-        return recordUtils;
+        return RecordUtilsHolder.recordUtils;
     }
 
     public RecordUtils() {
