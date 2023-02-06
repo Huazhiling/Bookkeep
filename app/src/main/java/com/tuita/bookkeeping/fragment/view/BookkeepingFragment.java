@@ -39,6 +39,7 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
     private RecyclerView bkRecord;
     private BookkeepingRecordAdapter bookkeepingRecordAdapter;
     private List<BookkeepingItemBean> bookkeepingItemBeans;
+    private boolean moreClickFlag;
 
     @Override
     protected void initView() {
@@ -77,6 +78,12 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
         }
         inAccount.setText(String.format("+%s", inPrice));
         outAccount.setText(String.format("-%s", outPrice));
+        if(bookkeepingItemBeans.size() == 10){
+            bkMore.setRightString("查看更多");
+            moreClickFlag = true;
+        }else{
+            bkMore.setRightString("");
+        }
     }
 
     private void adapterInti() {
@@ -87,9 +94,8 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
                 ToastUtils.showShort(bookkeepingItemBeans.get(position).getRecordName());
             }
         });
-        bkMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        bkMore.setOnClickListener(v -> {
+            if (moreClickFlag) {
                 startActivity(new Intent(mActivity, MoreBookkeepingActivity.class));
             }
         });
@@ -114,7 +120,7 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
     @Subscribe
     public void bookkeepingRefresh(BookkeepingRefreshEvent bookkeepingRefreshEvent){
         bookkeepingItemBeans.clear();
-        bookkeepingItemBeans.addAll(RecordUtils.getInstance().getNewsRecord());
+        bookkeepingItemBeans.addAll(RecordUtils.getInstance().getPreviewRecord());
         bookkeepingRecordAdapter.notifyDataSetChanged();
         initAccountPrice();
     }

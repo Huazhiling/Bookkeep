@@ -57,7 +57,11 @@ public class RecordUtils {
         return bookkeepingItemBeans.add(bean);
     }
 
-    public List<BookkeepingItemBean> getNewsRecord(){
+    public List<BookkeepingItemBean> getMoreRecord(){
         return bookkeepingItemBeans;
+    }
+
+    public List<BookkeepingItemBean> getPreviewRecord(){
+        return bookkeepingItemBeans.subList(0,10);
     }
 }

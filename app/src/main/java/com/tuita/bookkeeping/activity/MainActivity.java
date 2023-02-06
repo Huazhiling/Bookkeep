@@ -21,7 +21,6 @@ import java.util.List;
 
 @XmlLayoutResId(portContentId = R.layout.activity_main)
 public class MainActivity extends BaseActivity {
-    private List<Fragment> fragmentMg;
     private ViewPager2 mainVp;
     private RadioGroup mainBtn;
     private ImageView mainAdd;
@@ -44,19 +43,20 @@ public class MainActivity extends BaseActivity {
                 clickList.get(position).setChecked(true);
             }
         });
+        mainVp.setUserInputEnabled(false);
     }
 
     @Override
     protected void findView() {
-        mainVp = (ViewPager2) findViewById(R.id.main_vp);
-        mainBtn = (RadioGroup) findViewById(R.id.main_btn);
-        mainAdd = (ImageView) findViewById(R.id.main_add);
+        mainVp = findViewById(R.id.main_vp);
+        mainBtn = findViewById(R.id.main_btn);
+        mainAdd = findViewById(R.id.main_add);
     }
 
     @Override
     protected void initView() {
         clickList = new ArrayList<>();
-        fragmentMg = new ArrayList<>();
+        List<Fragment> fragmentMg = new ArrayList<>();
         BookkeepingFragment bookkeepingFragment = new BookkeepingFragment();
         MoreFragment moreFragment = new MoreFragment();
         fragmentMg.add(bookkeepingFragment);
