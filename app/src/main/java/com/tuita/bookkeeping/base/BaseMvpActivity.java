@@ -21,6 +21,16 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActiv
         initMVPData();
     }
 
+    @Override
+    protected void adapterInit() {
+
+    }
+
+    @Override
+    protected void viewInit() {
+
+    }
+
     protected abstract void initMVPData();
 
     protected abstract void initMVPView();

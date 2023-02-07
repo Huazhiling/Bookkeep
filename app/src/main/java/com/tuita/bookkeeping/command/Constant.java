@@ -16,4 +16,10 @@ public class Constant {
      */
     public static final String[] contents = {"结婚", "生子", "周岁", "满月", "生日"
             , "乔迁", "压岁", "升学", "大寿", "丧事"};
+
+
+    public static class SystemConfig{
+        public static final int DEFAULT_PREVIEW_RECORD = 5;
+        public static final int MAX_PREVIEW_RECORD = 3;
+    }
 }

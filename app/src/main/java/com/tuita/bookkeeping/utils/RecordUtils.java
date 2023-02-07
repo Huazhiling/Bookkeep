@@ -1,5 +1,7 @@
 package com.tuita.bookkeeping.utils;
 
+import static com.tuita.bookkeeping.command.Constant.SystemConfig.DEFAULT_PREVIEW_RECORD;
+import static com.tuita.bookkeeping.command.Constant.SystemConfig.MAX_PREVIEW_RECORD;
 import static com.tuita.bookkeeping.command.Constant.contents;
 import static com.tuita.bookkeeping.command.Constant.resIds;
 
@@ -27,13 +29,8 @@ public class RecordUtils {
         bookkeepingItemBeans = new ArrayList<>();
     }
 
-    public List<BookkeepingItemBean> initSimulationData() {
-        return initSimulationData(5);
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    public List<BookkeepingItemBean> initSimulationData(int number) {
-        for (int i = 0; i < number; i++) {
+    public void initSimulationData() {
+        for (int i = 0; i < DEFAULT_PREVIEW_RECORD; i++) {
             BookkeepingItemBean bean = new BookkeepingItemBean();
             int typePotion = (int) (Math.random() * 7);
             bean.setRecordBookkeepingType(resIds[typePotion]);
@@ -44,7 +41,6 @@ public class RecordUtils {
             bean.setRecordTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
             bookkeepingItemBeans.add(bean);
         }
-        return bookkeepingItemBeans;
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -57,6 +53,6 @@ public class RecordUtils {
     }
 
     public List<BookkeepingItemBean> getPreviewRecord() {
-        return bookkeepingItemBeans.subList(0, Math.min(bookkeepingItemBeans.size(), 10));
+        return bookkeepingItemBeans.subList(0, Math.min(bookkeepingItemBeans.size(), MAX_PREVIEW_RECORD));
     }
 }

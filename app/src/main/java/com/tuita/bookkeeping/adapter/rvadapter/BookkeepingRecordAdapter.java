@@ -1,7 +1,5 @@
 package com.tuita.bookkeeping.adapter.rvadapter;
 
-import android.graphics.Color;
-
 import androidx.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -28,5 +26,6 @@ public class BookkeepingRecordAdapter extends BaseQuickAdapter<BookkeepingItemBe
         } else {
             helper.setText(R.id.item_bk_price, "-" + price).setTextColor(R.id.item_bk_price, mContext.getColor(R.color.app_out_color));
         }
+        helper.addOnClickListener(R.id.record_parent);
     }
 }

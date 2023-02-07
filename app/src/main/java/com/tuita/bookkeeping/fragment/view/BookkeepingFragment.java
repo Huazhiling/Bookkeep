@@ -1,5 +1,7 @@
 package com.tuita.bookkeeping.fragment.view;
 
+import static com.tuita.bookkeeping.command.Constant.SystemConfig.MAX_PREVIEW_RECORD;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.View;
@@ -55,7 +57,7 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
     protected void initData() {
         super.initData();
         bookkeepingItemBeans = new ArrayList<>();
-        bookkeepingItemBeans.addAll(RecordUtils.getInstance().initSimulationData());
+        bookkeepingItemBeans.addAll(RecordUtils.getInstance().getPreviewRecord());
         bookkeepingRecordAdapter = new BookkeepingRecordAdapter(R.layout.item_booppeening_record, bookkeepingItemBeans);
         bkRecord.setAdapter(bookkeepingRecordAdapter);
         bkTime.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
@@ -78,7 +80,7 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
         }
         inAccount.setText(String.format("+%s", inPrice));
         outAccount.setText(String.format("-%s", outPrice));
-        if(bookkeepingItemBeans.size() == 10){
+        if(bookkeepingItemBeans.size() == MAX_PREVIEW_RECORD){
             bkMore.setRightString("查看更多");
             moreClickFlag = true;
         }else{
