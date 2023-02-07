@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.MoreBookkeepingActivity" />
+        <activity android:name=".activity.view.MoreBookkeepingActivity" />
         <activity
             android:name=".activity.InsertBookkeepingActivity"
             android:windowSoftInputMode="adjustResize" />

@@ -11,7 +11,7 @@ import com.allen.library.SuperTextView;
 import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.tuita.bookkeeping.R;
-import com.tuita.bookkeeping.activity.MoreBookkeepingActivity;
+import com.tuita.bookkeeping.activity.view.MoreBookkeepingActivity;
 import com.tuita.bookkeeping.adapter.rvadapter.BookkeepingRecordAdapter;
 import com.tuita.bookkeeping.annoation.XmlLayoutResId;
 import com.tuita.bookkeeping.base.BaseMvpFragment;
