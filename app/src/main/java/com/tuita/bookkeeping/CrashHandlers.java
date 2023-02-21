@@ -32,7 +32,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class CrashHandlers implements UncaughtExceptionHandler {
-    public static String TAG = "MyCrash";
+    public static String TAG = "CrashHandlers";
     // 系统默认的UncaughtException处理类
     private UncaughtExceptionHandler mDefaultHandler;
 
