@@ -18,10 +18,10 @@ import com.tuita.bookkeeping.adapter.rvadapter.BookkeepingRecordAdapter;
 import com.tuita.bookkeeping.annoation.XmlLayoutResId;
 import com.tuita.bookkeeping.base.BaseMvpFragment;
 import com.tuita.bookkeeping.base.BasePresenter;
-import com.tuita.bookkeeping.bean.BookkeepingItemBean;
 import com.tuita.bookkeeping.event.BookkeepingRefreshEvent;
 import com.tuita.bookkeeping.fragment.contract.BookkeepingContract;
 import com.tuita.bookkeeping.fragment.presenter.BookkeepingPresenter;
+import com.tuita.bookkeeping.room.entity.Bookkeeping;
 import com.tuita.bookkeeping.ui.RuleRecyclerLines;
 import com.tuita.bookkeeping.utils.RecordUtils;
 
@@ -40,7 +40,7 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
     private SuperTextView bkMore;
     private RecyclerView bkRecord;
     private BookkeepingRecordAdapter bookkeepingRecordAdapter;
-    private List<BookkeepingItemBean> bookkeepingItemBeans;
+    private List<Bookkeeping> bookkeepings;
     private boolean moreClickFlag;
 
     @Override
@@ -56,9 +56,9 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
     @Override
     protected void initData() {
         super.initData();
-        bookkeepingItemBeans = new ArrayList<>();
-        bookkeepingItemBeans.addAll(RecordUtils.getInstance().getPreviewRecord());
-        bookkeepingRecordAdapter = new BookkeepingRecordAdapter(R.layout.item_booppeening_record, bookkeepingItemBeans);
+        bookkeepings = new ArrayList<>();
+        bookkeepings.addAll(RecordUtils.getInstance().getPreviewRecord());
+        bookkeepingRecordAdapter = new BookkeepingRecordAdapter(R.layout.item_booppeening_record, bookkeepings);
         bkRecord.setAdapter(bookkeepingRecordAdapter);
         bkTime.setText(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         adapterInti();
@@ -71,16 +71,16 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
 
     private void initAccountPrice() {
         int inPrice = 0, outPrice = 0;
-        for (BookkeepingItemBean bookkeepingItemBean : bookkeepingItemBeans) {
-            if (bookkeepingItemBean.getRecordStatus() == 1) {
-                inPrice += bookkeepingItemBean.getRecordPrice();
+        for (Bookkeeping bkItemBean : bookkeepings) {
+            if (bkItemBean.getRecordStatus() == 1) {
+                inPrice += bkItemBean.getRecordPrice();
             } else {
-                outPrice += bookkeepingItemBean.getRecordPrice();
+                outPrice += bkItemBean.getRecordPrice();
             }
         }
         inAccount.setText(String.format("+%s", inPrice));
         outAccount.setText(String.format("-%s", outPrice));
-        if(bookkeepingItemBeans.size() == MAX_PREVIEW_RECORD){
+        if(bookkeepings.size() == MAX_PREVIEW_RECORD){
             bkMore.setRightString("查看更多");
             moreClickFlag = true;
         }else{
@@ -93,7 +93,7 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
         bookkeepingRecordAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                ToastUtils.showShort(bookkeepingItemBeans.get(position).getRecordName());
+                ToastUtils.showShort(bookkeepings.get(position).getRecordName());
             }
         });
         bkMore.setOnClickListener(v -> {
@@ -121,8 +121,8 @@ public class BookkeepingFragment extends BaseMvpFragment<BookkeepingPresenter> i
     @SuppressLint("NotifyDataSetChanged")
     @Subscribe
     public void bookkeepingRefresh(BookkeepingRefreshEvent bookkeepingRefreshEvent){
-        bookkeepingItemBeans.clear();
-        bookkeepingItemBeans.addAll(RecordUtils.getInstance().getPreviewRecord());
+        bookkeepings.clear();
+        bookkeepings.addAll(RecordUtils.getInstance().getPreviewRecord());
         bookkeepingRecordAdapter.notifyDataSetChanged();
         initAccountPrice();
     }

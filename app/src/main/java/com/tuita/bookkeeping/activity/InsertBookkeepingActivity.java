@@ -9,25 +9,22 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.tuita.bookkeeping.R;
 import com.tuita.bookkeeping.adapter.rvadapter.BookkeepingTypeAdapter;
 import com.tuita.bookkeeping.adapter.rvadapter.InsertItemAdapter;
 import com.tuita.bookkeeping.annoation.XmlLayoutResId;
 import com.tuita.bookkeeping.base.BaseActivity;
-import com.tuita.bookkeeping.bean.BookkeepingItemBean;
 import com.tuita.bookkeeping.bean.BookkeepingTypeBean;
 import com.tuita.bookkeeping.bean.InsertItemBean;
 import com.tuita.bookkeeping.event.BookkeepingRefreshEvent;
 import com.tuita.bookkeeping.listener.ICountDownCallBack;
-import com.tuita.bookkeeping.listener.IDialogDismissCallBack;
+import com.tuita.bookkeeping.room.database.BookkeepingDatabase;
+import com.tuita.bookkeeping.room.entity.Bookkeeping;
 import com.tuita.bookkeeping.utils.RecordUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -117,7 +114,7 @@ public class InsertBookkeepingActivity extends BaseActivity {
                 if (!checkInfo()) {
                     return;
                 }
-                BookkeepingItemBean bean = new BookkeepingItemBean();
+                Bookkeeping bean = new Bookkeeping();
                 bean.setRecordBookkeepingType(resIds[selectPosition]);
                 bean.setRecordName(contents[selectPosition]);
                 bean.setRecordDescription(insertRemark.getText().toString().trim());
@@ -129,24 +126,32 @@ public class InsertBookkeepingActivity extends BaseActivity {
                 bean.setRecordPrice(recordPrice);
                 bean.setRecordStatus(insertStatusSl.isChecked() ? 0 : 1);
                 bean.setRecordTime(insertTypeTime.getText().toString().trim());
-                boolean isAdd = RecordUtils.getInstance().insertBookkeepingRecord(bean);
-                if (isAdd) {
-                    showSuccessDialog(() -> {
-                        EventBus.getDefault().post(new BookkeepingRefreshEvent());
-                        finish();
-                    }, new ICountDownCallBack() {
-                        @Override
-                        public void onTick(long millisUntilFinished) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        BookkeepingDatabase.getInstance(getApplicationContext())
+                                .bookkeepingDao()
+                                .insertRecord(bean);
+                    }
+                }).start();
+//                boolean isAdd = RecordUtils.getInstance().insertBookkeepingRecord(bean);
+//                if (count > 0) {
+                showSuccessDialog(() -> {
+                    EventBus.getDefault().post(new BookkeepingRefreshEvent());
+                    finish();
+                }, new ICountDownCallBack() {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
 
-                        }
+                    }
 
-                        @Override
-                        public void onFinish() {
-                            dialog.dismiss();
-                        }
-                    });
-                }
+                    @Override
+                    public void onFinish() {
+                        dialog.dismiss();
+                    }
+                });
             }
+//            }
         });
     }
 

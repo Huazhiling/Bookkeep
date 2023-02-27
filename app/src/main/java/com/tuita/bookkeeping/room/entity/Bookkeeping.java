@@ -1,9 +1,12 @@
-package com.tuita.bookkeeping.bean;
+package com.tuita.bookkeeping.room.entity;
 
-import java.io.InputStream;
-import java.math.BigDecimal;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-public class BookkeepingItemBean {
+@Entity
+public class Bookkeeping {
+    @PrimaryKey(autoGenerate = true)
+    private int recordId;
     /**
      * 记录时间
      */
@@ -19,7 +22,7 @@ public class BookkeepingItemBean {
     /**
      * 语音描述
      */
-    private InputStream recordAudioDesc;
+    private String recordAudioDesc;
     /**
      * 人情金额
      */
@@ -32,6 +35,14 @@ public class BookkeepingItemBean {
      * 人情状态，是支出，还是收入
      */
     private int recordStatus;
+
+    public int getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(int recordId) {
+        this.recordId = recordId;
+    }
 
     public String getRecordTime() {
         return recordTime;
@@ -57,11 +68,11 @@ public class BookkeepingItemBean {
         this.recordDescription = recordDescription;
     }
 
-    public InputStream getRecordAudioDesc() {
+    public String getRecordAudioDesc() {
         return recordAudioDesc;
     }
 
-    public void setRecordAudioDesc(InputStream recordAudioDesc) {
+    public void setRecordAudioDesc(String recordAudioDesc) {
         this.recordAudioDesc = recordAudioDesc;
     }
 
@@ -88,4 +99,5 @@ public class BookkeepingItemBean {
     public void setRecordStatus(int recordStatus) {
         this.recordStatus = recordStatus;
     }
+
 }

@@ -13,7 +13,7 @@ import com.tuita.bookkeeping.adapter.rvadapter.BookkeepingRecordAdapter;
 import com.tuita.bookkeeping.annoation.XmlLayoutResId;
 import com.tuita.bookkeeping.base.BaseMvpActivity;
 import com.tuita.bookkeeping.base.BasePresenter;
-import com.tuita.bookkeeping.bean.BookkeepingItemBean;
+import com.tuita.bookkeeping.room.entity.Bookkeeping;
 import com.tuita.bookkeeping.utils.RecordUtils;
 
 import java.util.ArrayList;
@@ -21,8 +21,7 @@ import java.util.List;
 
 @XmlLayoutResId(portContentId = R.layout.activity_more_bookkeeping)
 public class MoreBookkeepingActivity extends BaseMvpActivity<MoreBookkeepingPresenter> implements MoreBookkeepingContract.MoreBookkeepingView {
-    private BookkeepingRecordAdapter bookkeepingRecordAdapter;
-    private List<BookkeepingItemBean> bookkeepingItemBeans;
+    private List<Bookkeeping> bookkeepings;
     private RecyclerView moreRv;
 
     @Override
@@ -38,14 +37,14 @@ public class MoreBookkeepingActivity extends BaseMvpActivity<MoreBookkeepingPres
 
     @Override
     protected void initMVPView() {
-        bookkeepingItemBeans = new ArrayList<>();
-        bookkeepingItemBeans.addAll(RecordUtils.getInstance().getMoreRecord());
-        bookkeepingRecordAdapter = new BookkeepingRecordAdapter(R.layout.item_booppeening_record, bookkeepingItemBeans);
+        bookkeepings = new ArrayList<>();
+        bookkeepings.addAll(RecordUtils.getInstance().getMoreRecord());
+        BookkeepingRecordAdapter bookkeepingRecordAdapter = new BookkeepingRecordAdapter(R.layout.item_booppeening_record, bookkeepings);
         moreRv.setAdapter(bookkeepingRecordAdapter);
         bookkeepingRecordAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                ToastUtils.showShort(bookkeepingItemBeans.get(position).getRecordName());
+                ToastUtils.showShort(bookkeepings.get(position).getRecordName());
             }
         });
     }

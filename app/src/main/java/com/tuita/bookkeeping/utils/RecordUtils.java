@@ -7,7 +7,7 @@ import static com.tuita.bookkeeping.command.Constant.resIds;
 
 import android.annotation.SuppressLint;
 
-import com.tuita.bookkeeping.bean.BookkeepingItemBean;
+import com.tuita.bookkeeping.room.entity.Bookkeeping;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 public class RecordUtils {
-    private final List<BookkeepingItemBean> bookkeepingItemBeans;
+    private final List<Bookkeeping> bookkeepingItemBeans;
 
     private static final class RecordUtilsHolder {
         static final RecordUtils recordUtils = new RecordUtils();
@@ -31,7 +31,7 @@ public class RecordUtils {
 
     public void initSimulationData() {
         for (int i = 0; i < DEFAULT_PREVIEW_RECORD; i++) {
-            BookkeepingItemBean bean = new BookkeepingItemBean();
+            Bookkeeping bean = new Bookkeeping();
             int typePotion = (int) (Math.random() * 7);
             bean.setRecordBookkeepingType(resIds[typePotion]);
             bean.setRecordName(contents[typePotion]);
@@ -44,15 +44,15 @@ public class RecordUtils {
     }
 
     @SuppressLint("SimpleDateFormat")
-    public boolean insertBookkeepingRecord(BookkeepingItemBean bean) {
+    public boolean insertBookkeepingRecord(Bookkeeping bean) {
         return bookkeepingItemBeans.add(bean);
     }
 
-    public List<BookkeepingItemBean> getMoreRecord() {
+    public List<Bookkeeping> getMoreRecord() {
         return bookkeepingItemBeans;
     }
 
-    public List<BookkeepingItemBean> getPreviewRecord() {
+    public List<Bookkeeping> getPreviewRecord() {
         return bookkeepingItemBeans.subList(0, Math.min(bookkeepingItemBeans.size(), MAX_PREVIEW_RECORD));
     }
 }

@@ -8,6 +8,6 @@ public class SuApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        RecordUtils.getInstance().initSimulationData();
+//        RecordUtils.getInstance().initSimulationData();
     }
 }

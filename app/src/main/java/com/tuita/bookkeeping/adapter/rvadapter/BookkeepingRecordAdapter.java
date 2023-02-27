@@ -5,17 +5,17 @@ import androidx.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tuita.bookkeeping.R;
-import com.tuita.bookkeeping.bean.BookkeepingItemBean;
+import com.tuita.bookkeeping.room.entity.Bookkeeping;
 
 import java.util.List;
 
-public class BookkeepingRecordAdapter extends BaseQuickAdapter<BookkeepingItemBean, BaseViewHolder> {
-    public BookkeepingRecordAdapter(int layoutResId, @Nullable List<BookkeepingItemBean> data) {
+public class BookkeepingRecordAdapter extends BaseQuickAdapter<Bookkeeping, BaseViewHolder> {
+    public BookkeepingRecordAdapter(int layoutResId, @Nullable List<Bookkeeping> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, BookkeepingItemBean item) {
+    protected void convert(BaseViewHolder helper, Bookkeeping item) {
         helper.setImageResource(R.id.item_bk_icon, item.getRecordBookkeepingType());
         helper.setText(R.id.item_bk_name, item.getRecordName());
         helper.setText(R.id.item_bk_desc, item.getRecordDescription());
