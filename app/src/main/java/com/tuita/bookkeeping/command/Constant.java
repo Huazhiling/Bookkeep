@@ -19,7 +19,13 @@ public class Constant {
 
 
     public static class SystemConfig{
+        /**
+         * 默认的初始化预览条数
+         */
         public static final int DEFAULT_PREVIEW_RECORD = 5;
+        /**
+         * 最大的预览条数
+         */
         public static final int MAX_PREVIEW_RECORD = 3;
     }
 }

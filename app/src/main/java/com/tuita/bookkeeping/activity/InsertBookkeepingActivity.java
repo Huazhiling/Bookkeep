@@ -126,6 +126,7 @@ public class InsertBookkeepingActivity extends BaseActivity {
                 bean.setRecordPrice(recordPrice);
                 bean.setRecordStatus(insertStatusSl.isChecked() ? 0 : 1);
                 bean.setRecordTime(insertTypeTime.getText().toString().trim());
+                bean.setRecordPerson(insertPerson.getText().toString().trim());
                 new Thread(new Runnable() {
                     @Override
                     public void run() {

@@ -16,6 +16,10 @@ public class Bookkeeping {
      */
     private String recordName;
     /**
+     * 交易人员
+     */
+    private String recordPerson;
+    /**
      * 描述，备注
      */
     private String recordDescription;
@@ -35,6 +39,14 @@ public class Bookkeeping {
      * 人情状态，是支出，还是收入
      */
     private int recordStatus;
+
+    public String getRecordPerson() {
+        return recordPerson;
+    }
+
+    public void setRecordPerson(String recordPerson) {
+        this.recordPerson = recordPerson;
+    }
 
     public int getRecordId() {
         return recordId;
