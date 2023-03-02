@@ -8,6 +8,10 @@ public class Bookkeeping {
     @PrimaryKey(autoGenerate = true)
     private int recordId;
     /**
+     * 记录人Account
+     */
+    private String userAccount;
+    /**
      * 记录时间
      */
     private String recordTime;
@@ -46,6 +50,14 @@ public class Bookkeeping {
 
     public void setRecordPerson(String recordPerson) {
         this.recordPerson = recordPerson;
+    }
+
+    public String getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(String userAccount) {
+        this.userAccount = userAccount;
     }
 
     public int getRecordId() {
