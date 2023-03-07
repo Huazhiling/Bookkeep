@@ -1,20 +1,18 @@
 package com.tuita.bookkeeping.utils;
 
-import com.tuita.bookkeeping.room.entity.Bookkeeping;
-
 import java.util.List;
 
 /**
  * 静态工具类
  * 线程管理，用来异步操作room数据库
  */
-public class IORoomUtils {
+public class IORoomUtils<T> {
 
-    public static void insertNewsData(){
+    public static <T> void insertNewsData(T t) {
 
     }
 
-    public static List<Bookkeeping> queryData(){
+    public static <T> List<T> queryData() {
         return null;
     }
 }
