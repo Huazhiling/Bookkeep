@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "682862561597",
+    "project_id": "onlineproject-af504",
+    "storage_bucket": "onlineproject-af504.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682862561597:android:7c165e9e75833a28685d54",
+        "android_client_info": {
+          "package_name": "com.tuita.bookkeeping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682862561597-idm5g2v5f6oj91mdepl56ru4fjt1d5ik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCncPkZeZniVkAbzMLdI-O31tq7XU1fjoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682862561597-idm5g2v5f6oj91mdepl56ru4fjt1d5ik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
